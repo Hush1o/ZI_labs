@@ -16,10 +16,10 @@ def generate_key_pair(key_size: int = 2048):
     return private_key, private_key.public_key()
 
 
-def save_private_key(private_key, path: str, password: bytes | None = None):
+def save_private_key(private_key, path: str, key_phrase: bytes | None = None):
     enc_algo = (
-        serialization.BestAvailableEncryption(password)
-        if password
+        serialization.BestAvailableEncryption(key_phrase)
+        if key_phrase
         else serialization.NoEncryption()
     )
     pem = private_key.private_bytes(
