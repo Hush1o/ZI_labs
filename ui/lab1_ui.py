@@ -80,7 +80,7 @@ class Lab1Frame(ctk.CTkFrame):
         try:
             self.update_params()
             n = int(self.entry_n.get()) if self.entry_n.get() else 50
-            sequence = lab1.generate_N_sequence(n, start=lab1.x0)
+            sequence = lab1.generate_n_sequence(n, start=lab1.x0)
             if n >= 10 :
                 self.write_to_log(f"Згенеровано {n} чисел. Перші 10:\n{sequence[:10]}...")
             else :
@@ -103,7 +103,7 @@ class Lab1Frame(ctk.CTkFrame):
         try:
             self.update_params()
             n = int(self.entry_n.get()) if self.entry_n.get() else 1000
-            seq = lab1.generate_N_sequence(n, start=lab1.x0)
+            seq = lab1.generate_n_sequence(n, start=lab1.x0)
             pi_approx = lab1.chesaro(seq)
             self.write_to_log(f"🎯 Тест Чезаро (N={n}): π ≈ {pi_approx:.6f}")
         except Exception as e:

@@ -7,7 +7,7 @@ FRAME_COLOR = "#F0F4F8"
 BUTTON_COLOR = "#3B82F6"
 HOVER_COLOR = "#2563EB"
 TEXT_COLOR = "#1E293B"
-
+DEFAULT_FONT = "Segoe UI"
 
 class Lab2Frame(ctk.CTkFrame):
     def __init__(self, master, **kwargs):
@@ -16,14 +16,14 @@ class Lab2Frame(ctk.CTkFrame):
         self.log_file = "lab2_results.txt"
 
         self.label = ctk.CTkLabel(self, text="MD5 Hash & Integrity",
-                                  font=("Segoe UI", 24, "bold"), text_color=TEXT_COLOR)
+                                  font=(DEFAULT_FONT, 24, "bold"), text_color=TEXT_COLOR)
         self.label.pack(pady=15)
 
         self.text_frame = ctk.CTkFrame(self, fg_color=FRAME_COLOR, corner_radius=12)
         self.text_frame.pack(padx=20, pady=10, fill="x")
 
         ctk.CTkLabel(self.text_frame, text="1. Хешування тексту:",
-                     font=("Segoe UI", 14, "bold"), text_color=TEXT_COLOR).pack(pady=5)
+                     font=(DEFAULT_FONT, 14, "bold"), text_color=TEXT_COLOR).pack(pady=5)
 
         inner_text = ctk.CTkFrame(self.text_frame, fg_color="transparent")
         inner_text.pack(fill="x", padx=20, pady=10)
@@ -39,7 +39,7 @@ class Lab2Frame(ctk.CTkFrame):
         self.file_frame.pack(padx=20, pady=10, fill="x")
 
         ctk.CTkLabel(self.file_frame, text="2. Робота з файлами та цілісність:",
-                     font=("Segoe UI", 14, "bold"), text_color=TEXT_COLOR).pack(pady=5)
+                     font=(DEFAULT_FONT, 14, "bold"), text_color=TEXT_COLOR).pack(pady=5)
 
         self.expected_hash_entry = ctk.CTkEntry(self.file_frame,
                                                 placeholder_text="Еталонний MD5 (можна вставити вручну)")

@@ -11,6 +11,8 @@ GREEN  = "#10B981"
 RED    = "#EF4444"
 AMBER  = "#F59E0B"
 PURPLE = "#8B5CF6"
+DEFAULT_FONT = "Segoe UI"
+ALL_FILES_DESC = "Всі файли"
 
 
 class Lab5Frame(ctk.CTkFrame):
@@ -25,7 +27,7 @@ class Lab5Frame(ctk.CTkFrame):
         ctk.CTkLabel(
             self,
             text="DSS Digital Signature (Lab 5)",
-            font=("Segoe UI", 24, "bold"),
+            font=(DEFAULT_FONT, 24, "bold"),
             text_color=TEXT_COLOR,
         ).pack(pady=15)
 
@@ -34,7 +36,7 @@ class Lab5Frame(ctk.CTkFrame):
         ctk.CTkLabel(
             info,
             text="Цифровий підпис: DSA + SHA-256 | Розмір ключа: 1024, 2048 або 3072 біт",
-            font=("Segoe UI", 12, "italic"),
+            font=(DEFAULT_FONT, 12, "italic"),
             text_color="#64748B",
         ).pack(pady=6)
 
@@ -42,7 +44,7 @@ class Lab5Frame(ctk.CTkFrame):
         key_row = ctk.CTkFrame(self, fg_color="transparent")
         key_row.pack(pady=4)
         ctk.CTkLabel(key_row, text="Розмір ключа:", text_color=TEXT_COLOR,
-                     font=("Segoe UI", 13)).pack(side="left", padx=(0, 8))
+                     font=(DEFAULT_FONT, 13)).pack(side="left", padx=(0, 8))
         self.key_size_var = ctk.StringVar(value="2048")
         for size in ("1024", "2048", "3072"):
             ctk.CTkRadioButton(
@@ -69,19 +71,19 @@ class Lab5Frame(ctk.CTkFrame):
 
         self.key_status = ctk.CTkLabel(
             self, text="⚠ Ключі не завантажено",
-            font=("Segoe UI", 12), text_color=AMBER,
+            font=(DEFAULT_FONT, 12), text_color=AMBER,
         )
         self.key_status.pack(pady=2)
 
         ctk.CTkFrame(self, height=1, fg_color="#CBD5E1").pack(fill="x", padx=20, pady=8)
 
         # ── Підпис рядка ───────────────────────────────────────────────────────
-        ctk.CTkLabel(self, text="Підпис рядка:", font=("Segoe UI", 13, "bold"),
+        ctk.CTkLabel(self, text="Підпис рядка:", font=(DEFAULT_FONT, 13, "bold"),
                      text_color=TEXT_COLOR).pack(anchor="w", padx=22)
 
         self.message_entry = ctk.CTkEntry(
             self, placeholder_text="Введіть повідомлення для підпису…",
-            font=("Segoe UI", 13), height=38,
+            font=(DEFAULT_FONT, 13), height=38,
         )
         self.message_entry.pack(padx=20, pady=(4, 6), fill="x")
 
@@ -195,7 +197,7 @@ class Lab5Frame(ctk.CTkFrame):
             if choice:
                 path = filedialog.askopenfilename(
                     title="Оберіть приватний ключ (PEM)",
-                    filetypes=[("PEM", "*.pem"), ("Всі файли", "*.*")],
+                    filetypes=[("PEM", "*.pem"), (ALL_FILES_DESC, "*.*")],
                 )
                 if not path:
                     return
@@ -205,7 +207,7 @@ class Lab5Frame(ctk.CTkFrame):
             else:
                 path = filedialog.askopenfilename(
                     title="Оберіть публічний ключ (PEM)",
-                    filetypes=[("PEM", "*.pem"), ("Всі файли", "*.*")],
+                    filetypes=[("PEM", "*.pem"), (ALL_FILES_DESC, "*.*")],
                 )
                 if not path:
                     return
@@ -293,7 +295,7 @@ class Lab5Frame(ctk.CTkFrame):
 
         sig_path = filedialog.askopenfilename(
             title="Оберіть файл підпису (.sig)",
-            filetypes=[("Signature", "*.sig"), ("Всі файли", "*.*")],
+            filetypes=[("Signature", "*.sig"), (ALL_FILES_DESC, "*.*")],
         )
         if not sig_path:
             return

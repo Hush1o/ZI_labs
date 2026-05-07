@@ -18,7 +18,7 @@ def gcd(a,b) :
 def next_x(x):
     return (a * x + c) % m
 
-def generate_N_sequence(n, start = x0):
+def generate_n_sequence(n, start = x0):
     sequence = []
     x = start
     for _ in range(n):

@@ -67,8 +67,8 @@ def test_save_load_private_key_no_password(keys, tmp_path):
 def test_save_load_private_key_with_password(keys, tmp_path):
     priv, _ = keys
     path = str(tmp_path / "priv_enc.pem")
-    save_private_key(priv, path, password=b"secret")
-    loaded = load_private_key(path, password=b"secret")
+    save_private_key(priv, path, key_phrase=b"secret")
+    loaded = load_private_key(path, key_phrase=b"secret")
     assert loaded is not None
 
 def test_save_load_public_key(keys, tmp_path):
@@ -98,11 +98,11 @@ def test_decrypt_custom_output_path(keys, tmp_path):
     assert os.path.exists(dec_path)
 
 def test_encrypt_decrypt_empty_file(keys, tmp_path):
-    priv, pub = keys
+    _, pub = keys
     file_path = tmp_path / "empty.txt"
     file_path.write_bytes(b"")
     enc_path = encrypt_file(str(file_path), pub)
-    dec_path = decrypt_file(enc_path, priv)
+    dec_path = decrypt_file(enc_path, _)
     with open(dec_path, "rb") as f:
         assert f.read() == b""
 

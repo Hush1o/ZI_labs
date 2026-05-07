@@ -4,8 +4,8 @@ from labs import lab1
 
 class TestLab1(unittest.TestCase):
 
-    def test_generate_N_sequence(self):
-        seq = lab1.generate_N_sequence(100)
+    def test_generate_n_sequence(self):
+        seq = lab1.generate_n_sequence(100)
         for num in seq:
             self.assertTrue(0 <= num < lab1.m)
 

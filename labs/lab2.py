@@ -19,11 +19,6 @@ class MD5:
         X = list(struct.unpack("<16I", chunk))
         a, b, c, d = self.A, self.B, self.C, self.D
         for i in range(64):
-            # if i == 0 or i % 16 == 0:
-            #     print(f"A={hex(a)}, B={hex(b)}, C={hex(c)}, D={hex(d)}")
-            #     print(f"A={bin(a)}, B={bin(b)}, C={bin(c)}, D={bin(d)}")
-            #     print(f"A={a}, B={b}, C={c}, D={d}")
-            #     print("-"*145)
             if i < 16:
                 f = (b & c) | ((~b) & d)
                 g = i
