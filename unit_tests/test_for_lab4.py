@@ -1,7 +1,9 @@
 import pytest
 import sys
 import os
+
 sys.path.insert(0, os.path.dirname(__file__))
+
 from labs.lab4 import (
     generate_key_pair,
     save_private_key,
