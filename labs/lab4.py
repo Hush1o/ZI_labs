@@ -40,9 +40,9 @@ def save_public_key(public_key, path: str):
         f.write(pem)
 
 
-def load_private_key(path: str, password: bytes | None = None):
+def load_private_key(path: str, key_phrase: bytes | None = None):
     with open(path, "rb") as f:
-        return serialization.load_pem_private_key(f.read(), password=password)
+        return serialization.load_pem_private_key(f.read(), password=key_phrase)
 
 
 def load_public_key(path: str):
